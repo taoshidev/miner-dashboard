@@ -8,7 +8,7 @@ import {
   getExpandedRowModel,
 } from "@tanstack/react-table";
 
-import { formatCurrency, formatDate, within24Hours } from "../../utils";
+import { formatCurrency, formatDate } from "../../utils";
 
 import { Sources } from "../Sources";
 
@@ -59,7 +59,7 @@ const columns = [
       if (row.original.price_sources.length === 0) {
         return null;
       }
-
+      
       return (
         <Box ta="right">
           <Button
@@ -87,7 +87,7 @@ export const Orders = ({ orders }: OrdersProps) => {
     getCoreRowModel: getCoreRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
   });
-
+  
   return (
     <Table.Tr className={styles.tr}>
       <Table.Td colSpan={9} className={styles.td}>
@@ -101,9 +101,9 @@ export const Orders = ({ orders }: OrdersProps) => {
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext(),
-                          )}
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
                     </Text>
                   </Table.Th>
                 ))}
@@ -116,20 +116,10 @@ export const Orders = ({ orders }: OrdersProps) => {
                 <Table.Tr>
                   {row.getVisibleCells().map((cell) => (
                     <Table.Td key={cell.id}>
-                      <Fragment>
-                        {within24Hours(row.original) ? (
-                          <Tooltip label="Results within 24hrs are hidden">
-                            <Text size="xs" c="orange" ta="right">
-                              Hidden
-                            </Text>
-                          </Tooltip>
-                        ) : (
-                          flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext(),
-                          )
-                        )}
-                      </Fragment>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
                     </Table.Td>
                   ))}
                 </Table.Tr>
@@ -143,4 +133,4 @@ export const Orders = ({ orders }: OrdersProps) => {
       </Table.Td>
     </Table.Tr>
   );
-}
+};
