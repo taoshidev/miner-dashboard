@@ -2,7 +2,6 @@ import {
   Anchor,
   Container,
   Group,
-  Box,
   Burger,
   Title,
   Stack,

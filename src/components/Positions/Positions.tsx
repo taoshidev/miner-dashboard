@@ -10,12 +10,21 @@ import {
   SortingState,
 } from "@tanstack/react-table";
 
+import { Position, Order, TradePair } from "../../types";
 import { formatDate, toNormalizePercent } from "../../utils";
 
 import { Orders } from "../Orders";
 
+interface ColumnData {
+  trade_pair: TradePair[];
+  position_type: string;
+  open_ms: number;
+  close_ms: number;
+  return_at_close: number;
+  orders: Order[];  // Adjust the type based on what 'Orders' expects
+}
 
-const columnHelper = createColumnHelper<any>();
+const columnHelper = createColumnHelper<ColumnData>();
 
 const columns = [
   columnHelper.accessor("trade_pair", {
@@ -74,6 +83,10 @@ const columns = [
     ),
   }),
 ];
+
+interface PositionsProps {
+  positions: Position[];
+}
 
 export const Positions = ({ positions }: PositionsProps) => {
   const [sorting] = useState<SortingState>([{ id: "open_ms", desc: false }]);

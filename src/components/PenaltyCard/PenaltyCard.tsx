@@ -2,8 +2,6 @@ import { Card, Group, Text, ThemeIcon, Tooltip } from "@mantine/core";
 import { IconHelp } from "@tabler/icons-react";
 import chroma from "chroma-js";
 
-import { orange } from "../../theme/colors";
-
 type PenaltyCardProps = {
   title: string;
   item: number | undefined;

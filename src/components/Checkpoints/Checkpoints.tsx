@@ -1,50 +1,17 @@
 import { Box, Group, ThemeIcon, Title, Tooltip, SimpleGrid } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { IconHelp } from "@tabler/icons-react";
+
+import { Statistics } from "../../types";
 
 import { StatCard } from "../StatCard";
 import { PenaltyCard } from "../PenaltyCard";
-import { IconHelp } from "@tabler/icons-react";
-
-interface Score {
-  value: number;
-  rank: number;
-  percentile: number;
-}
-
-interface ScoreGroup {
-  omega: Score;
-  sharpe: Score;
-  risk_adjusted_return: Score;
-  short_risk_adjusted_return: Score;
-}
-
-interface PenalizedScoreGroup {
-  omega: Score;
-  sharpe: Score;
-  risk_adjusted_return: Score;
-  short_risk_adjusted_return: Score;
-}
-
-interface PenaltiesGroup {
-  biweekly: number;
-  daily: number;
-  drawdown: number;
-  returns_ratio: number;
-  time_consistency: number;
-  total: number;
-}
 
 interface CheckpointsProps {
-  statistics: {
-    penalties: PenaltiesGroup;
-    scores: ScoreGroup;
-    penalized_scores: PenalizedScoreGroup;
-  };
+  statistics: Statistics;
 }
 
-export const Checkpoints = ({ data }: CheckpointsProps) => {
-  console.log(data);
-  const { penalties, scores, penalized_scores } = data.data[0];
+export const Checkpoints = ({ statistics }: CheckpointsProps) => {
+  const { penalties, scores, penalized_scores } = statistics.data[0];
   
   return (
     <Box>

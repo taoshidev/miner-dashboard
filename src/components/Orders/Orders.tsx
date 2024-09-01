@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Table, Text, Box, Button, Tooltip } from "@mantine/core";
+import { Table, Text, Box, Button } from "@mantine/core";
 import {
   createColumnHelper,
   flexRender,
@@ -8,17 +8,22 @@ import {
   getExpandedRowModel,
 } from "@tanstack/react-table";
 
+import { Order, Source } from "../../types";
 import { formatCurrency, formatDate } from "../../utils";
 
 import { Sources } from "../Sources";
 
 import styles from "./orders.module.css";
 
-interface OrdersProps {
-  orders: Order[];
+interface ColumnData {
+  leverage: number;
+  order_type: string;
+  processed_ms: number;
+  price: number;
+  price_sources: Source[];
 }
 
-const columnHelper = createColumnHelper<any>();
+const columnHelper = createColumnHelper<ColumnData>();
 
 const columns = [
   columnHelper.accessor("leverage", {
@@ -74,6 +79,10 @@ const columns = [
     },
   }),
 ];
+
+interface OrdersProps {
+  orders: Order[];
+}
 
 export const Orders = ({ orders }: OrdersProps) => {
   const table = useReactTable({

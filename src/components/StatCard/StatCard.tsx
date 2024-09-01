@@ -1,9 +1,11 @@
 import { Card, Group, Text, Tooltip, ThemeIcon, Title, Box } from "@mantine/core";
 import { IconHelp } from "@tabler/icons-react";
 
+import { Scores } from "../../types";
+
 type StatCardProps = {
   title: string;
-  item: Score | number; // Accept both Score and number
+  item: Scores | number; // Accept both Score and number
   isPercentage?: boolean;
   sigFigs?: number;
   tooltipText: string;

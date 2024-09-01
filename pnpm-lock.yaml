@@ -55,6 +55,9 @@ devDependencies:
   '@eslint/js':
     specifier: ^9.9.0
     version: 9.9.1
+  '@types/chroma-js':
+    specifier: ^2.4.4
+    version: 2.4.4
   '@types/lodash':
     specifier: ^4.17.7
     version: 4.17.7
@@ -893,6 +896,10 @@ packages:
     resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
     dependencies:
       '@babel/types': 7.25.4
+    dev: true
+
+  /@types/chroma-js@2.4.4:
+    resolution: {integrity: sha512-/DTccpHTaKomqussrn+ciEvfW4k6NAHzNzs/sts1TCqg333qNxOhy8TNIoQCmbGG3Tl8KdEhkGAssb1n3mTXiQ==}
     dev: true
 
   /@types/d3-array@3.2.1:

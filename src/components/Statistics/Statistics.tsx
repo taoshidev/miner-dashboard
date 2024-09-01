@@ -7,13 +7,15 @@ import {
   toShortFloat,
 } from "../../utils";
 
+import { Statistics as StatisticsType, Position } from "../../types";
+
 interface StatisticsProps {
-  data: any;
+  statistics: StatisticsType;
+  positions: Position[];
 }
 
-export function Statistics({ data }: StatisticsProps) {
-  const { statistics, positions } = data;
-  const { weight, penalties, engagement, drawdowns } = statistics.data[0];
+export const Statistics = ({ statistics, positions }: StatisticsProps) => {
+  const { weight, engagement, drawdowns } = statistics.data[0];
   
   return (
     <Box mb="xl">
@@ -133,4 +135,4 @@ export function Statistics({ data }: StatisticsProps) {
       </SimpleGrid>
     </Box>
   );
-}
+};
