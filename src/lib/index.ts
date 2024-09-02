@@ -1,4 +1,4 @@
-import axios, {AxiosError} from "axios";
+import axios, { AxiosError } from "axios";
 
 const MINER_URL = import.meta.env.VITE_MINER_URL;
 
@@ -11,8 +11,8 @@ const api = axios.create({
 
 export async function getMinerData(id: string) {
   try {
-    const response = await api.get(`/miner/${id}`);
-
+    const response = await api.get(`/miner`);
+    
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {

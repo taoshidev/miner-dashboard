@@ -1,3 +1,4 @@
+import { isEmpty } from "lodash";
 import { useState, useEffect } from "react";
 import { AppShell, Center, Loader } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -41,6 +42,14 @@ export const App = () => {
     fetchData();
   }, []);
   
+  if (isEmpty(data?.positions) || isEmpty(data?.statistics)) {
+    return (
+      <Center>
+        No data available.
+      </Center>
+    );
+  }
+  
   if (loading) {
     return (
       <Center>
@@ -52,7 +61,7 @@ export const App = () => {
   if (error) {
     return (
       <Center>
-        <div>Error: {error}</div>
+        Error: {error}
       </Center>
     );
   }

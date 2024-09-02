@@ -11,7 +11,6 @@ interface MainProps {
 }
 
 export const Main = ({ data }: MainProps) => {
-  console.log(data);
   const { statistics, positions } = data;
   
   return (
