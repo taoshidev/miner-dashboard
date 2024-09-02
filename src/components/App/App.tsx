@@ -11,8 +11,6 @@ import { Main } from "../Main";
 
 import "./App.css";
 
-const MINER_ADDRESS = import.meta.env.VITE_MINER_ADDRESS;
-
 export const App = () => {
   const [opened, { toggle }] = useDisclosure();
   
@@ -25,7 +23,7 @@ export const App = () => {
       setLoading(true);
       
       try {
-        const minerData = await getMinerData(MINER_ADDRESS);
+        const minerData = await getMinerData();
         
         setData(minerData);
       } catch (error: unknown) {
@@ -42,18 +40,18 @@ export const App = () => {
     fetchData();
   }, []);
   
-  if (isEmpty(data?.positions) || isEmpty(data?.statistics)) {
-    return (
-      <Center>
-        No data available.
-      </Center>
-    );
-  }
-  
   if (loading) {
     return (
       <Center>
         <Loader color="orange" type="dots" />
+      </Center>
+    );
+  }
+  
+  if (isEmpty(data?.positions) || isEmpty(data?.statistics)) {
+    return (
+      <Center>
+        No data available.
       </Center>
     );
   }

@@ -9,7 +9,7 @@ const api = axios.create({
   },
 });
 
-export async function getMinerData(id: string) {
+export async function getMinerData() {
   try {
     const response = await api.get(`/miner`);
     
