@@ -24,7 +24,7 @@ export const App = () => {
       
       try {
         const minerData = await getMinerData();
-        
+        console.log(minerData);
         setData(minerData);
       } catch (error: unknown) {
         if (error instanceof Error) {

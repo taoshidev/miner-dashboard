@@ -6,16 +6,24 @@ import {
   useReactTable,
   getSortedRowModel,
 } from "@tanstack/react-table";
+import { Source } from "../../types";
 
 import { formatDate } from "../../utils";
 
 import styles from "./sources.module.css";
 
-interface SourcesProps {
-  sources: any[];
+interface ColumnData {
+  source: string;
+  start_ms: number;
+  high: number;
+  low: number;
+  timespan_ms: number;
+  lag_ms: number;
+  open: number;
+  close: number;
 }
 
-const columnHelper = createColumnHelper<any>();
+const columnHelper = createColumnHelper<ColumnData>();
 
 const columns = [
   columnHelper.accessor("source", {
@@ -84,6 +92,12 @@ const columns = [
   }),
 ];
 
+
+interface SourcesProps {
+  sources: Source[];
+}
+
+
 export const Sources = ({ sources = [] }: SourcesProps) => {
   const table = useReactTable({
     data: sources,
@@ -91,7 +105,7 @@ export const Sources = ({ sources = [] }: SourcesProps) => {
     getSortedRowModel: getSortedRowModel(),
     getCoreRowModel: getCoreRowModel(),
   });
-
+  
   return (
     <Table.Tr className={styles.tr}>
       <Table.Td colSpan={5} className={styles.td}>
@@ -105,9 +119,9 @@ export const Sources = ({ sources = [] }: SourcesProps) => {
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext(),
-                          )}
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
                     </Text>
                   </Table.Th>
                 ))}
@@ -129,4 +143,4 @@ export const Sources = ({ sources = [] }: SourcesProps) => {
       </Table.Td>
     </Table.Tr>
   );
-}
+};

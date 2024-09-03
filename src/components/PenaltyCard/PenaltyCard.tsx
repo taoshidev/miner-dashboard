@@ -2,9 +2,12 @@ import { Card, Group, Text, ThemeIcon, Tooltip } from "@mantine/core";
 import { IconHelp } from "@tabler/icons-react";
 import chroma from "chroma-js";
 
+import { orange } from "../../theme/colors";
+import { isColorDark } from "../../utils";
+
 type PenaltyCardProps = {
   title: string;
-  item: number | undefined;
+  item: number;
   isPercentage?: boolean;
   sigFigs?: number;
   tooltipText: string;
@@ -18,21 +21,25 @@ export const PenaltyCard = ({
   tooltipText,
 }: PenaltyCardProps) => {
   const value = item;
-  const multiplier = 100000000;
+  const multiplier = 10000000;
   
-  const getBackgroundColor = (value: number) => {
-    return chroma("#E46026").darken(value * multiplier).hex(); // Orange background if value < 0.2, otherwise white
-  };
+  console.log(value * multiplier);
   
-  const getTextColor = (value: number) => {
-    return value < 0.2 ? "#FFFFFF" : "#000000"; // White text if value < 0.2, otherwise black
+  const getColors = () => {
+    const baseColor = orange[6];
+    const background = chroma(baseColor).brighten(value * multiplier);
+    
+    return {
+      background: background.hex(),
+      foreground: isColorDark(background.hex()) ? "#ffffff" : "#000000",
+    };
   };
   
   return (
-    <Card withBorder flex="1" h="100%" bg={getBackgroundColor(value!)}>
+    <Card withBorder flex="1" h="100%" bg={getColors().background}>
       <Group justify="space-between" align="center">
         <Group align="center" gap="xs">
-          <Text size="sm" fw="bold" c={getTextColor(value!)}>{title}</Text>
+          <Text size="sm" fw="bold" c={getColors().foreground}>{title}</Text>
           <Tooltip
             label={tooltipText}
             withArrow
@@ -51,7 +58,7 @@ export const PenaltyCard = ({
           </Tooltip>
         </Group>
         
-        <Text size="sm" c={getTextColor(value!)}>
+        <Text size="sm" c={getColors().foreground}>
           {value !== undefined && value !== null && !isNaN(value)
             ? isPercentage
               ? `${(value * 100).toFixed(sigFigs)}%`

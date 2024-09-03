@@ -1,5 +1,8 @@
+import chroma from "chroma-js";
 import dayjs from "dayjs";
 import dayjsPluginUTC from "dayjs/plugin/utc";
+
+import { ChallengePeriod } from "../types";
 
 dayjs.extend(dayjsPluginUTC);
 
@@ -58,6 +61,13 @@ export const toNormalizePercent = (num: number, decimals = 2) => {
   return percentage.toPrecision(decimals) + "%";
 };
 
-export const isInChallengePeriod = (challengeperiod: any) => {
+export const isInChallengePeriod = (challengeperiod: ChallengePeriod) => {
   return challengeperiod.status === "testing";
 };
+
+export const isColorDark = (color: string) => {
+  const luminance = chroma(color).luminance();
+  
+  return luminance < 0.5;
+};
+

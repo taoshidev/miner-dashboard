@@ -1,3 +1,9 @@
+export interface ChallengePeriod {
+  remaining_time_ms: number;
+  start_time_ms: number;
+  status: "testing" | "success";
+}
+
 export interface Source {
   close: number;
   high: number;
@@ -37,10 +43,17 @@ export interface Position {
   trade_pair: TradePair[];
 }
 
-export interface Scores {
+export interface Score {
   value: number;
   rank: number;
   percentile: number;
+}
+
+export interface Scores {
+  risk_adjusted_return: Score;
+  short_risk_adjusted_return: Score;
+  omega: Score;
+  sharpe: Score;
 }
 
 export interface Penalties {
@@ -52,17 +65,25 @@ export interface Penalties {
   total: number;
 }
 
+export interface Engagement {
+  n_positions: number;
+  position_duration: number;
+  checkpoint_durations: number;
+}
+
 export interface PenalizedScores {
-  omega: Scores;
-  sharpe: Scores;
-  risk_adjusted_return: Scores;
-  short_risk_adjusted_return: Scores;
+  omega: Score;
+  sharpe: Score;
+  risk_adjusted_return: Score;
+  short_risk_adjusted_return: Score;
 }
 
 export interface StatisticsData {
   penalties: Penalties;
-  scores: Scores;
   penalized_scores: PenalizedScores;
+  engagement: Engagement;
+  weight: Score;
+  scores: Scores;
 }
 
 export interface Statistics {

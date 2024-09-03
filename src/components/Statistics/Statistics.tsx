@@ -19,7 +19,7 @@ export const Statistics = ({ statistics, positions }: StatisticsProps) => {
   
   return (
     <Box mb="xl">
-      <Title order={3}>Statistics</Title>
+      <Title mb="sm" order={3}>Statistics</Title>
       
       <SimpleGrid mb="lg" cols={4}>
         <Card withBorder>
@@ -91,11 +91,11 @@ export const Statistics = ({ statistics, positions }: StatisticsProps) => {
             <Text size="xs" c="gray">
               Total Recorded Closed Position Duration
             </Text>
-            <Text size="xs">{toHours(engagement.position_duration)} hr</Text>
+            <Text size="xs">{toHours(engagement.checkpoint_durations)} hr</Text>
           </Group>
         </Card>
         
-        <Card bg="orange" c="white">
+        <Card>
           <Text size="sm" fw="bold" mb="md">
             Positions
           </Text>

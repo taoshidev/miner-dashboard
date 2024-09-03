@@ -48,9 +48,10 @@ pnpm install
 
 ### 3. Configure Environment Variables
 
-The application requires you to set an environment variables to function correctly. A template .env.example file has
-been
-provided.
+Add your miner URL to the environment variables. You can find your miner URL in your miner logs.
+
+For example:
+![Imgur](https://i.imgur.com/KusnPFt.png)
 
 Copy the .env.example file to .env using the following command:
 
@@ -71,21 +72,41 @@ Replace your-miner-url-here with the actual URL your miner.
 To start the development server, run:
 
 ```bash
-npm start
+npm run dev
 ```
 
 if you are using yarn:
 
 ```bash
-yarn start
+yarn dev
 ```
 
 or if you are using pnpm:
 
 ```bash
-pnpm start
+pnpm dev
 ```
 
 This will start the app on http://localhost:5173/ by default. Open your browser and navigate to this URL to view your
 miner dashboard.
+
+#### For Productions
+
+To build a production ready Dashboard, run:
+
+```bash
+npm run build
+```
+
+if you are using yarn:
+
+```bash
+yarn build
+```
+
+or if you are using pnpm:
+
+```bash
+pnpm build
+```
 

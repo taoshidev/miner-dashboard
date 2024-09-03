@@ -51,11 +51,9 @@ export const Checkpoints = ({ statistics }: CheckpointsProps) => {
       </Box>
       
       
-      <Box mb="xl">
+      <Box mb="lg">
         <Group justify="flex-start" gap="xs" align="center" mb="sm">
-          <Title order={3}>
-            Penalty Multipliers
-          </Title>
+          <Title order={3}>Penalty Multipliers</Title>
           <Tooltip
             label="The scores of the miners are multiplied by all of the penalties to produce the final penalized score. If any penalty is 0, the miner's score is set to 0."
             withArrow
