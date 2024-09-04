@@ -4,6 +4,7 @@ import { MinerData } from "../../types";
 
 import { Checkpoints } from "../Checkpoints";
 import { Statistics } from "../Statistics";
+import { OverviewGraph } from "../OverviewGraph";
 import { Positions } from "../Positions";
 
 interface MainProps {
@@ -15,6 +16,7 @@ export const Main = ({ data }: MainProps) => {
   
   return (
     <Container fluid pt="72">
+      <OverviewGraph statistics={statistics} />
       <Checkpoints statistics={statistics} />
       <Statistics statistics={statistics} positions={positions} />
       <Positions positions={positions} />

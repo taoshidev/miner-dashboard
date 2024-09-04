@@ -71,6 +71,10 @@ export interface Engagement {
   checkpoint_durations: number;
 }
 
+export interface Checkpoint {
+  mdd: number;
+}
+
 export interface PenalizedScores {
   omega: Score;
   sharpe: Score;
@@ -84,6 +88,7 @@ export interface StatisticsData {
   engagement: Engagement;
   weight: Score;
   scores: Scores;
+  checkpoints: Checkpoint[];
 }
 
 export interface Statistics {

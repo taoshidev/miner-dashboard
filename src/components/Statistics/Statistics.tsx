@@ -95,7 +95,7 @@ export const Statistics = ({ statistics, positions }: StatisticsProps) => {
           </Group>
         </Card>
         
-        <Card>
+        <Card withBorder>
           <Text size="sm" fw="bold" mb="md">
             Positions
           </Text>

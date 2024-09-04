@@ -23,8 +23,6 @@ export const PenaltyCard = ({
   const value = item;
   const multiplier = 10000000;
   
-  console.log(value * multiplier);
-  
   const getColors = () => {
     const baseColor = orange[6];
     const background = chroma(baseColor).brighten(value * multiplier);
