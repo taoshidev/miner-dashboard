@@ -16,10 +16,10 @@ export const Main = ({ data }: MainProps) => {
   
   return (
     <Container fluid pt="72">
-      <OverviewGraph statistics={statistics} />
       <Checkpoints statistics={statistics} />
       <Statistics statistics={statistics} positions={positions} />
       <Positions positions={positions} />
+      <OverviewGraph statistics={statistics} />
     </Container>
   );
 };
