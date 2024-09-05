@@ -1,5 +1,5 @@
 import { useState, Fragment } from "react";
-import { Text, Box, Button, Divider, Table, Title } from "@mantine/core";
+import { Text, Box, Button, Divider, Table, Title, Card } from "@mantine/core";
 import {
   createColumnHelper,
   flexRender,
@@ -109,9 +109,8 @@ export const Positions = ({ positions }: PositionsProps) => {
   });
   
   return (
-    <Box>
+    <Card withBorder>
       <Title order={3} mb="sm">Positions</Title>
-      <Divider my="md" />
       <Table horizontalSpacing="0">
         <Table.Tbody>
           <Table.Tr>
@@ -157,6 +156,6 @@ export const Positions = ({ positions }: PositionsProps) => {
           </Table.Tr>
         </Table.Tbody>
       </Table>
-    </Box>
+    </Card>
   );
 };
