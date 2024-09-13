@@ -1,10 +1,18 @@
 import chroma from "chroma-js";
 import dayjs from "dayjs";
 import dayjsPluginUTC from "dayjs/plugin/utc";
+import duration from "dayjs/plugin/duration";
+import clsx, { type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 import { ChallengePeriod } from "../types";
 
 dayjs.extend(dayjsPluginUTC);
+dayjs.extend(duration);
+
+export function cx(...args: ClassValue[]) {
+  return twMerge(clsx(...args));
+}
 
 export const shortenAddress = (address: string, length = 4) => {
   const text = address.toString();
