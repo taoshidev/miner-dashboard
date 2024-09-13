@@ -59,8 +59,8 @@ export const Challenges = ({ statistics }: ChallengesProps) => {
                   <p className="flex justify-between text-sm mb-2">
                     <span className="font-medium text-gray-900">Return</span>
                     <span
-                      className="font-medium text-gray-900 dark:text-gray-50">{challengeReturn.value}<span
-                      className="font-normal text-gray-500">/{challengeReturn.target.toFixed(2).toString()}</span></span>
+                      className="font-medium text-gray-900 dark:text-gray-50">{challengeReturn.value.toFixed(2)}<span
+                      className="font-normal text-gray-500">/{challengeReturn.target.toFixed(2).toString()+'%'}</span></span>
                   </p>
                   <ProgressBar
                     showAnimation
