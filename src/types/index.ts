@@ -1,7 +1,17 @@
+export interface Challenge {
+  passing: boolean,
+  target: number,
+  value: number
+}
+
 export interface ChallengePeriod {
   remaining_time_ms: number;
   start_time_ms: number;
   status: "testing" | "success";
+  positions: Challenge;
+  return: Challenge;
+  return_ratio: Challenge;
+  unrealized_ratio: Challenge;
 }
 
 export interface Source {
@@ -82,14 +92,22 @@ export interface PenalizedScores {
   short_risk_adjusted_return: Score;
 }
 
+export interface Drawdowns {
+  approximate: number;
+  effective: number;
+  recent: number;
+}
+
 export interface StatisticsData {
   hotkey: string;
   penalties: Penalties;
   penalized_scores: PenalizedScores;
   engagement: Engagement;
+  drawdowns: Drawdowns;
   weight: Score;
   scores: Scores;
   checkpoints: Checkpoint[];
+  challengeperiod: ChallengePeriod;
 }
 
 export interface Statistics {

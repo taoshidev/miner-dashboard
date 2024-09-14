@@ -1,6 +1,7 @@
 import { Container } from "@mantine/core";
 
 import { MinerData } from "../../types";
+import { Challenges } from "../Challenges";
 
 import { Checkpoints } from "../Checkpoints";
 import { Statistics } from "../Statistics";
@@ -16,6 +17,7 @@ export const Main = ({ data }: MainProps) => {
   
   return (
     <Container fluid pt="72">
+      <Challenges statistics={statistics} />
       <Checkpoints statistics={statistics} />
       <Statistics statistics={statistics} positions={positions} />
       <Positions positions={positions} />
