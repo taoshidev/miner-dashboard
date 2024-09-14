@@ -65,7 +65,7 @@ Update the .env file
 VITE_MINER_URL=your-miner-url-here
 ```
 
-Replace your-miner-url-here with the actual URL your miner.
+Replace your-miner-url-here with the actual URL of your miner's uvicorn server, e.g. `http://127.0.0.1:41511`.
 
 ### 4. Start the Application
 

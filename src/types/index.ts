@@ -83,6 +83,7 @@ export interface PenalizedScores {
 }
 
 export interface StatisticsData {
+  hotkey: string;
   penalties: Penalties;
   penalized_scores: PenalizedScores;
   engagement: Engagement;
@@ -95,7 +96,15 @@ export interface Statistics {
   data: StatisticsData[];
 }
 
+export interface Positions {
+  positions: Position[]
+  thirty_day_returns: number;
+  all_time_returns: number;
+  n_positions: number;
+  percentage_profitable: number;
+}
+
 export interface MinerData {
   statistics: Statistics;
-  positions: Position[];
+  positions: Record<string, Positions>;
 }

@@ -7,15 +7,17 @@ import {
   toShortFloat,
 } from "../../utils";
 
-import { Statistics as StatisticsType, Position } from "../../types";
+import { Statistics as StatisticsType, Position, Positions } from "../../types";
 
 interface StatisticsProps {
   statistics: StatisticsType;
-  positions: Position[];
+  positions: Record<string, Positions>;
 }
 
 export const Statistics = ({ statistics, positions }: StatisticsProps) => {
-  const { weight, engagement, drawdowns } = statistics.data[0];
+  const { weight, engagement, drawdowns, hotkey } = statistics.data[0];
+
+  const positionData = positions[hotkey];
   
   return (
     <Box mb="xl">
@@ -105,7 +107,7 @@ export const Statistics = ({ statistics, positions }: StatisticsProps) => {
               30-Day Returns
             </Text>
             <Text size="xs">
-              {toNormalizePercent(positions.thirty_day_returns)}
+              {toPercent(positionData.thirty_day_returns, 0)}
             </Text>
           </Group>
           
@@ -114,7 +116,7 @@ export const Statistics = ({ statistics, positions }: StatisticsProps) => {
               All Time Returns
             </Text>
             <Text size="xs">
-              {toNormalizePercent(positions.all_time_returns)}
+              {toPercent(positionData.all_time_returns, 0)}
             </Text>
           </Group>
           
@@ -122,14 +124,14 @@ export const Statistics = ({ statistics, positions }: StatisticsProps) => {
             <Text size="xs" opacity={0.8}>
               Total Number of Positions
             </Text>
-            <Text size="xs">{positions.n_positions}</Text>
+            <Text size="xs">{positionData.n_positions}</Text>
           </Group>
           
           <Group justify="space-between" align="center" mb="xs">
             <Text size="xs" opacity={0.8}>
               Percentage Profitable
             </Text>
-            <Text size="xs">{toPercent(positions.percentage_profitable, 0)}</Text>
+            <Text size="xs">{toPercent(positionData.percentage_profitable, 0)}</Text>
           </Group>
         </Card>
       </SimpleGrid>
