@@ -1,5 +1,5 @@
 import { useState, Fragment } from "react";
-import { Text, Box, Button, Divider, Table, Title, Card } from "@mantine/core";
+import { Text, Box, Button, Table, Title, Card } from "@mantine/core";
 import {
   createColumnHelper,
   flexRender,

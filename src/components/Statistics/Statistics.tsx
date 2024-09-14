@@ -3,11 +3,10 @@ import {
   toHours,
   toPercent,
   toRemainingPercent,
-  toNormalizePercent,
   toShortFloat,
 } from "../../utils";
 
-import { Statistics as StatisticsType, Position, Positions } from "../../types";
+import { Statistics as StatisticsType, Positions } from "../../types";
 
 interface StatisticsProps {
   statistics: StatisticsType;
