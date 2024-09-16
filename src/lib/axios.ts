@@ -9,9 +9,23 @@ const api = axios.create({
   },
 });
 
-export async function getMinerData() {
+export async function getMiner() {
   try {
     const response = await api.get(`/miner`);
+
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      throw new Error(`Axios error: ${error.message}`);
+    } else {
+      throw new Error(`Unknown error: ${(error as Error).message}`);
+    }
+  }
+}
+
+export async function getMinerData() {
+  try {
+    const response = await api.get(`/miner-data`);
     
     return response.data;
   } catch (error) {
