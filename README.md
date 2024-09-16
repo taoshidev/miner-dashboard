@@ -48,7 +48,8 @@ pnpm install
 
 ### 3. Configure Environment Variables
 
-Add your miner URL to the environment variables. You can find your miner URL in your miner logs.
+Add your miner URL to the environment variables. You can find your miner URL in your miner logs. Note: if a port is
+occupied the miner will attempt to connect to the next available port, so confirm your port in the logs!
 
 For example:
 ![Imgur](https://i.imgur.com/KusnPFt.png)
