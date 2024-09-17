@@ -11,7 +11,6 @@ COPY . .
 EXPOSE 9089
 
 ENV VITE_PORT=9089
-ENV VITE_MINER_URL=""
 
 RUN npm run build
 
