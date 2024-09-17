@@ -111,3 +111,28 @@ or if you are using pnpm:
 pnpm build
 ```
 
+## Run with Docker
+
+You can run this project in a Docker container.
+
+#### 1. Set your .env file
+
+```env
+VITE_MINER_URL=your-miner-url-here
+```
+
+#### 2. Build the Docker image
+
+Note: if you want to change the VITE_MINER_URL you must repeat this step
+
+```bash
+docker build . -t "miner-dashboard:latest"
+```
+
+#### 3. Start a container
+
+Pass in the port you want to run on.
+
+```bash
+docker run -d -p 9091:9091 -e VITE_PORT=9091 --name local-dashboard miner-dashboard:latest
+```
