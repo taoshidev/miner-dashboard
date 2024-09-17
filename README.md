@@ -111,3 +111,20 @@ or if you are using pnpm:
 pnpm build
 ```
 
+## Run with Docker
+
+You can run this project in a Docker container.
+
+#### 1. Build the Docker image
+
+```bash
+docker build . -t "miner-dashboard:latest"
+```
+
+#### 1. Start a container
+
+Pass in the port you want to run on and your VITE_MINER_URL. Here's an example on port 9091
+
+```bash
+docker run -d -p 9091:9091 -e VITE_PORT=9091 -e VITE_MINER_URL="<your-uvicorn-url>" --name local-dashboard miner-dashboard:latest
+```
