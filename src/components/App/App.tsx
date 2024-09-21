@@ -48,18 +48,18 @@ export const App = () => {
     );
   }
   
-  if (isEmpty(data?.positions) || isEmpty(data?.statistics)) {
-    return (
-      <Center>
-        No data available.
-      </Center>
-    );
-  }
-  
   if (error) {
     return (
       <Center>
         Error: {error}
+      </Center>
+    );
+  }
+  
+  if (isEmpty(data?.positions) || isEmpty(data?.statistics)) {
+    return (
+      <Center>
+        No data available.
       </Center>
     );
   }
@@ -79,6 +79,5 @@ export const App = () => {
         <Main data={data as MinerData} />
       </AppShell.Main>
     </AppShell>
-  
   );
 };
